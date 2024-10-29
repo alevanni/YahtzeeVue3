@@ -87,4 +87,31 @@ button:focus-visible {
   font-size: 150px;
 }
 
-.score-table {}
+.score-table {
+  width: 100%;
+  border: 1px solid black;
+  border-collapse: collapse;
+  
+}
+
+.score-table thead {
+  border-bottom: 1px solid black;
+}
+
+.score-table td, th {
+  
+  padding: 10px;
+}
+
+.first {
+  background-color:darksalmon;
+}
+
+.second {
+  background-color: darkseagreen;
+}
+
+.explanation {
+  text-wrap: wrap;
+  font-size: small;
+}
