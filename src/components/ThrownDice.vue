@@ -1,4 +1,3 @@
-
 <script setup>
 
 // component that displays thrown dice and 
@@ -11,13 +10,8 @@ const playRound = () => emit('throwDice', throwFiveTimes());
 const props = defineProps({
     dice: {
         type: Array
-    } /*,
-    count: {
-        type: Object
-    }*/
+    } 
 });
-// const dice = props.dice;
-//const count = props.count;
 
 const diceImages = {
     0: '&#127922;',
@@ -35,24 +29,11 @@ const  throwFiveTimes = () => {
     
     let round = [] 
 
-    // we reset count to zero
-    /*
-    for (let i = 1; i < 7; i++) {
-        count[i] = 0;
-    }*/
-
     // we throw the dice five times
     for (let i = 0; i < 5; i++) {
         round[i] = Math.floor(Math.random() * 6 + 1);
     }
     
-    // we count
-    /*
-    round.forEach( element => {
-        count[element] += 1;
-    });
-    */
-    //console.log('result: ' + dice)
     return round; 
 } 
 

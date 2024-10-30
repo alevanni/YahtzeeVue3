@@ -3,22 +3,13 @@ import ThrownDice from './components/ThrownDice.vue'
 import ScoreTable from './components/ScoreTable.vue'
 import { ref, reactive } from 'vue'
 
-/*const count = reactive({
-  1: 0,
-  2: 0,
-  3: 0,
-  4: 0,
-  5: 0,
-  6: 0
-})*/
-
 const dice = reactive([0, 0, 0, 0, 0]);
 
 const updateDice = (data) => {
   for (let i=0; i<dice.length; i++) {
     dice[i] = data[i];
   }
-  console.log(data)
+  
 }
 </script>
 
