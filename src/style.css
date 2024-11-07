@@ -87,6 +87,10 @@ button:focus-visible {
   font-size: 150px;
 }
 
+.die.kept {
+  color: slategray;
+}
+
 .score-table {
   width: 100%;
   border: 1px solid black;
@@ -114,4 +118,12 @@ button:focus-visible {
 .explanation {
   text-wrap: wrap;
   font-size: small;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.unselectable {
+  user-select: none;
 }

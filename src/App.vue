@@ -4,18 +4,30 @@ import ScoreTable from './components/ScoreTable.vue'
 import { ref, reactive } from 'vue'
 
 const dice = reactive([0, 0, 0, 0, 0]);
+const keptDice = reactive([])
 
 const updateDice = (data) => {
   for (let i=0; i<dice.length; i++) {
-    dice[i] = data[i];
+    if (!keptDice.includes(i)) {
+      dice[i] = data[i];
+    }
   }
   
+}
+
+const toggleKeptDie = (index) => {
+  const indexOfDie = keptDice.indexOf(index);
+  if (indexOfDie >= 0) {
+    keptDice.splice(indexOfDie, 1);
+  } else {
+    keptDice.push(index);
+  }
 }
 </script>
 
 <template>
   <div>
-    <ThrownDice v-model:dice="dice"  @throwDice="updateDice"/>
+    <ThrownDice v-model:dice="dice" :keptDice="keptDice"  @throwDice="updateDice" @dieClicked="toggleKeptDie"/>
     <ScoreTable v-model:dice="dice" />
    
   </div>

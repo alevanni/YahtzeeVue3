@@ -4,13 +4,17 @@
 // contains the button to throw them
 
 import { ref } from 'vue'
-const emit = defineEmits(['throwDice']);
+const emit = defineEmits(['throwDice', 'dieClicked']);
 const playRound = () => emit('throwDice', throwFiveTimes());
+const dieClicked = (i) => emit('dieClicked', i)
 
 const props = defineProps({
     dice: {
         type: Array
-    } 
+    },
+    keptDice: {
+        type: Array
+    }
 });
 
 const diceImages = {
@@ -25,29 +29,32 @@ const diceImages = {
 
 
 
-const  throwFiveTimes = () => {
-    
-    let round = [] 
+const throwFiveTimes = () => {
+
+    let round = []
 
     // we throw the dice five times
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
         round[i] = Math.floor(Math.random() * 6 + 1);
     }
-    
-    return round; 
-} 
+
+    return round;
+}
 
 </script>
  
 <template>
     <div class="dice-board">
         <table id="dice">
+            <tbody>
                 <tr>
-                    <td class="die" v-for="result in props.dice" v-html="diceImages[result] "></td>
-                    
+                    <td :class="['die', 'unselectable', 'clickable', {'kept': keptDice.includes(index)}]" :key="index" v-for="(result, index) in props.dice" v-html="diceImages[result]"
+                        @click="dieClicked(index)"></td>
+
                 </tr>
+            </tbody>
         </table>
-            <!-- button that throws the dice -->
-            <button id="gooi" @click="playRound">Throw!</button>
+        <!-- button that throws the dice -->
+        <button id="gooi" @click="playRound">Throw!</button>
     </div>
 </template>
